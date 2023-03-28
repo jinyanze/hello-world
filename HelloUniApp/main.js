@@ -4,6 +4,8 @@ import store from './store'
 import Vue from 'vue'
 // main.js，注意要在use方法之后执行
 import uView from '@/uni_modules/uview-ui'
+
+// import { getImageInfo } from '@/utils/uni-app'
 // import uView from 'uview-ui'
 Vue.use(uView)
 Vue.config.productionTip = false
