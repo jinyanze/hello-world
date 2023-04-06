@@ -7,6 +7,12 @@ import uView from '@/uni_modules/uview-ui'
 
 // import { getImageInfo } from '@/utils/uni-app'
 // import uView from 'uview-ui'
+
+// import MescrollBody from "@/uni_modules/mescroll-uni/components/mescroll-body/mescroll-body.vue"
+// import MescrollUni from "@/uni_modules/mescroll-uni/components/mescroll-uni/mescroll-uni.vue"
+// Vue.component('mescroll-body', MescrollBody)
+// Vue.component('mescroll-uni', MescrollUni)
+
 Vue.use(uView)
 Vue.config.productionTip = false
 Vue.prototype.$store = store

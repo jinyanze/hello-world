@@ -1,0 +1,21 @@
+.yj-material-pop .box.data-v-6044e330 {
+  padding: 30rpx;
+}
+.yj-material-pop .box .header.data-v-6044e330 {
+  display: flex;
+  justify-content: space-between;
+}
+.yj-material-pop .box .header .btn.data-v-6044e330 {
+  padding: 8rpx 30rpx;
+  border-radius: 15rpx;
+}
+.yj-material-pop .box .header .notarize.data-v-6044e330 {
+  background: dodgerblue;
+  border: 1rpx dodgerblue solid;
+  color: white;
+}
+.yj-material-pop .box .header .canned.data-v-6044e330 {
+  background: white;
+  border: 1rpx black solid;
+}
+

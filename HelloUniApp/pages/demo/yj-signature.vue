@@ -26,7 +26,6 @@
 		},
 		onLoad() {
 			this.ctx = uni.createCanvasContext("mycanvas", this); //创建绘图对象
-
 			//设置画笔样式
 			this.ctx.lineWidth = 4;
 			this.ctx.lineCap = "round"
@@ -35,7 +34,6 @@
 		created() {
 			const _this = this;
 			this.ctx = uni.createCanvasContext("mycanvas", this); //创建绘图对象
-
 			//设置画笔样式
 			this.ctx.lineWidth = 4;
 			this.ctx.lineCap = "round"
@@ -121,13 +119,15 @@
 						document.body.appendChild(oA);
 						oA.click();
 						oA.remove();
-						this.$emit('saved')
+						console.log('子组件', res.tempFilePath);
+						this.$emit('saved', res.tempFilePath)
 						/*#endif*/
 						if (!isH5) {
 							uni.saveImageToPhotosAlbum({
 								filePath: res.tempFilePath,
 								success: () => {
-									this.$emit('saved')
+									console.log('子组件', res.tempFilePath);
+									this.$emit('saved', res.tempFilePath);
 								}
 							});
 						}

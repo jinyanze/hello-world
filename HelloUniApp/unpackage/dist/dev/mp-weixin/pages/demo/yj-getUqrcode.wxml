@@ -1,0 +1,1 @@
+<view><canvas class="{{[(!isVisibility)?'noVisibility':'']}}" style="{{('width: '+size+'px;height: '+size+'px;')}}" id="qrcode" canvas-id="qrcode"></canvas></view>

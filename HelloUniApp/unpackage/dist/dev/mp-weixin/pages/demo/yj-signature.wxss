@@ -1,0 +1,36 @@
+
+.title {
+	height: 50rpx;
+	line-height: 50rpx;
+	font-size: 16px;
+}
+.mycanvas {
+	/* width: 100%; */
+	height: calc(100vh - 200rpx);
+	background-color: #ECECEC;
+}
+.footer {
+	font-size: 16px;
+	height: 150rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.left,
+.right {
+	line-height: 100rpx;
+	height: 100rpx;
+	width: 200rpx;
+	text-align: center;
+	font-weight: bold;
+	color: white;
+	border-radius: 5rpx;
+}
+.left {
+	background: #3A9AFC;
+}
+.right {
+	background: #ECECEC;
+	color: #8F8F94;
+}
+

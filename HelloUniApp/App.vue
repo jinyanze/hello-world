@@ -6,8 +6,6 @@
 		version
 	} from './package.json'
 	import checkUpdate from '@/uni_modules/uni-upgrade-center-app/utils/check-update';
-	import VConsole from 'vconsole'
-	const vconsole = new VConsole()
 	export default {
 		onLaunch: function() {
 			// #ifdef H5

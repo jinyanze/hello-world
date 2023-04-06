@@ -1,0 +1,16 @@
+{
+  "navigationBarTitleText": "demo",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 40,
+  "usingComponents": {
+    "u-list": "/uni_modules/uview-ui/components/u-list/u-list",
+    "u-list-item": "/uni_modules/uview-ui/components/u-list-item/u-list-item",
+    "u-cell": "/uni_modules/uview-ui/components/u-cell/u-cell",
+    "u-avatar": "/uni_modules/uview-ui/components/u-avatar/u-avatar",
+    "u-popup": "/uni_modules/uview-ui/components/u-popup/u-popup",
+    "yj-card": "/pages/demo/yj-card",
+    "yj-signature": "/pages/demo/yj-signature",
+    "yj-material": "/pages/demo/yj-material",
+    "yj-get-uqrcode": "/pages/demo/yj-getUqrcode"
+  }
+}

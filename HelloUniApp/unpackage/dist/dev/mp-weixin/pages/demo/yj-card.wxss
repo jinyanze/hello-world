@@ -1,0 +1,63 @@
+.uni-card.data-v-4eebfd19 {
+  padding: 0 !important;
+}
+.yz-card.data-v-4eebfd19 {
+  font-size: 30rpx;
+}
+.header.data-v-4eebfd19 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: auto 20rpx;
+  padding: 10rpx 20rpx;
+}
+.header .left.data-v-4eebfd19 {
+  display: flex;
+  align-items: center;
+}
+.header .left .title.data-v-4eebfd19 {
+  font-size: 40rpx;
+}
+.header .left .info.data-v-4eebfd19 {
+  background: orange;
+  color: white;
+  border-radius: 15rpx;
+  padding: 3rpx 6rpx;
+  margin-left: 20rpx;
+}
+.header .right.data-v-4eebfd19 {
+  display: flex;
+  align-items: center;
+}
+.header .right .icon.data-v-4eebfd19 {
+  margin-left: 10rpx;
+}
+.body.data-v-4eebfd19 {
+  position: relative;
+}
+.body .list .item.data-v-4eebfd19 {
+  display: flex;
+}
+.body .list .item .label.data-v-4eebfd19 {
+  width: 160rpx;
+}
+.body .avatar-wrap.data-v-4eebfd19 {
+  position: absolute;
+  top: 5rpx;
+  right: 27rpx;
+  text-align: center;
+}
+.actions.data-v-4eebfd19 {
+  padding: 20rpx 20rpx;
+  border-top: 1rpx solid gray;
+  font-size: 35rpx;
+}
+.actions .actionsData.data-v-4eebfd19 {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.actions .actionsText.data-v-4eebfd19 {
+  color: red;
+}
+

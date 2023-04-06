@@ -11,7 +11,23 @@
 			"height": "60px"
 		}
 	},
-	"pages": [
+	"pages": [{
+			"path": "pages/mechanicalApproach/mechanicalApproach",
+			"style": {
+				"navigationBarTitleText": "进场单列表",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/demo/demo"
+
+		},
+		{
+			"path": "pages/about/about",
+			"style": {
+				"navigationBarTitleText": "关于"
+			}
+		},
 		// pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
 			"path": "pages/tabBar/component/component",
@@ -311,18 +327,8 @@
 			}
 		},
 		// #ifdef H5 || APP-PLUS
-		{
-			"path": "pages/about/about",
-			"style": {
-				"navigationBarTitleText": "关于"
-			}
-		},
-		{
-			"path": "pages/demo/demo",
-			"style": {
-				"navigationBarTitleText": "hello"
-			}
-		},
+
+
 		// #endif
 		{
 			"path": "platforms/app-plus/feedback/feedback",
@@ -338,31 +344,30 @@
 			}
 		}
 		// #endif
-	,{
-    "path": "uni_modules/uni-upgrade-center-app/pages/upgrade-popup",
-    "style": {
-        "app-plus": {
-            "animationDuration": 200,
-            "animationType": "fade-in",
-            "background": "transparent",
-            "backgroundColorTop": "transparent",
-            "popGesture": "none",
-            "scrollIndicator": false,
-            "titleNView": false
-        },
-        "disableScroll": true
-    }
-}
-    ,{
-            "path" : "pages/about/qrcode",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+		, {
+			"path": "uni_modules/uni-upgrade-center-app/pages/upgrade-popup",
+			"style": {
+				"app-plus": {
+					"animationDuration": 200,
+					"animationType": "fade-in",
+					"background": "transparent",
+					"backgroundColorTop": "transparent",
+					"popGesture": "none",
+					"scrollIndicator": false,
+					"titleNView": false
+				},
+				"disableScroll": true
+			}
+		}, {
+			"path": "pages/about/qrcode",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}
+
+	],
 	"subPackages": [{
 			"root": "pages/API",
 			"pages": [{
@@ -1345,6 +1350,7 @@
 		"backgroundColor": "#F8F8F8",
 		"backgroundColorTop": "#F4F5F6",
 		"backgroundColorBottom": "#F4F5F6",
+		"onReachBottomDistance": 500,
 		"mp-360": {
 			"navigationStyle": "custom"
 		},
