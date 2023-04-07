@@ -1,6 +1,9 @@
 <template>
 	<view class="refuel">
-		<u-tabs :list="tabsList" @click="cutTab" :scrollable="false"></u-tabs>
+		<u-sticky><u-tabs :list="tabsList" @click="cutTab" :scrollable="false" :activeStyle="{
+            color: 'rgb(60, 156, 255)',
+            transform: 'scale(1.05)'
+        }"></u-tabs></u-sticky>
 		<mescroll-body ref="mescrollRef" @init="initData" :fixed="true" :isLock="true" @down="downCallback"
 			@up="upCallback" :optUp="optUp">
 			<view class="item" v-for="item in refuelList" @click="toDetail(item)">
@@ -11,8 +14,9 @@
 				<view class="body">
 					<view class="label">制单人: {{item.person}}</view>
 					<view class="label">机械代码: {{item.mechanicalCode}}</view>
-					<view class="label">租赁方式: {{item.leaseLabel}}</view>
-					<view class="label">进场时间: {{item.approachTime}}</view>
+					<view class="label">油料: {{item.fuelType}}</view>
+					<view class="label">加油量（L）: {{item.fuelNum}}</view>
+					<view class="label">总金额（元）: {{item.money}}</view>
 				</view>
 			</view>
 		</mescroll-body>
@@ -42,7 +46,9 @@
 					num: 'JC00100004',
 					dateTime: '2023.02.11  10:00:00',
 					person: '李白',
-					oli: '汽油 95'
+					fuelType: '汽油 95',
+					fuelNum: 2,
+					money: 10
 				}
 			};
 		},
@@ -85,6 +91,10 @@
 
 <style lang="less" scoped>
 	.refuel {
+		/deep/.u-tabs {
+			background: white;
+		}
+
 		.item {
 			border: 1rpx solid black;
 			border-bottom: none;

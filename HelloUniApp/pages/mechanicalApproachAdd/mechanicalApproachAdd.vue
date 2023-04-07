@@ -4,7 +4,7 @@
 			<u-form-item required label="机械代码" ref="item1">
 				<u--input class="ta-right" v-model="mechanicalApproach.num" border="none" disabled
 					disabledColor="#f2f2f2"></u--input>
-				<u-icon name="scan" size="25"></u-icon>
+				<u-icon name="scan" size="25" @click="scanCode"></u-icon>
 			</u-form-item>
 			<u-form-item label="物料编码" ref="item1">
 				<u--input class="ta-right" v-model="mechanicalApproach.mechanicalCode" disabled disabledColor="#f2f2f2"
@@ -33,7 +33,7 @@
 			</u-form-item>
 			<u-form-item label="进场时间" ref="item1">
 				<view class="" style="width: 100%;text-align: right;" @click="showDateTime=true">
-					{{mechanicalApproach.showDateTime ? mechanicalApproach.showDateTime : '请选择进场时间'}}
+					{{mechanicalApproach.approachTime ? mechanicalApproach.approachTime : '请选择进场时间'}}
 				</view>
 			</u-form-item>
 			<u-form-item label="备注" ref="item1" labelPosition="top">
@@ -61,6 +61,9 @@
 </template>
 
 <script>
+	// 支付宝原生扫码组件
+	var mpaasScanModule = uni.requireNativePlugin("Mpaas-Scan-Module")
+	import moment from 'moment'
 	export default {
 		data() {
 			return {
@@ -104,9 +107,14 @@
 			}
 		},
 		methods: {
+			scanCode() {
+				mpaasScanModule.mpaasScan({},
+					(res) => {
+						console.log('aaa', res);
+					})
+			},
 			selectApprpacjDateTime(value) {
-				console.log('aaaaaa', value);
-				this.mechanicalApproach.approachTime = this.approachDateTime;
+				this.mechanicalApproach.approachTime = moment(value).format('YYYY-MM-DD hh:mm:ss');
 				this.showDateTime = false;
 			},
 			changeLease() {

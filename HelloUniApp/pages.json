@@ -387,6 +387,13 @@
 				"enablePullDownRefresh": false
 			}
 
+		}, {
+			"path": "pages/refuelAdd/refuelAdd",
+			"style": {
+				"navigationBarTitleText": "扫码加油",
+				"enablePullDownRefresh": false
+			}
+
 		}
 	],
 	"subPackages": [{

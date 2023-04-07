@@ -23,6 +23,7 @@
 	"dependencies": {
 		"localforage": "^1.10.0",
 		"mescroll-uni": "^1.3.7",
+		"moment": "^2.29.4",
 		"uqrcodejs": "^4.0.6",
 		"weixin-js-sdk": "^1.6.0"
 	},
