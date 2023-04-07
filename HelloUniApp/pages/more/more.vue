@@ -31,7 +31,7 @@
 				<u-input placeholder="请输入作业量" type="text" v-model="model.quantity" input-align="right" />
 			</u-form-item>
 			<u-form-item label="作业时间">
-				<u-button type="primary" text="一键导入" @click="handleRove"></u-button>
+				<u-button type="primary" text="一键 导入" @click="handleRove"></u-button>
 			</u-form-item>
 			<u-swipe-action>
 				<u-swipe-action-item :options="options1" @click='closeClick(index)' v-for="(item,index) in CardList"
@@ -54,16 +54,17 @@
 						<u-form-item label="工作时长">
 							<text>{{item.timeOver}}分钟</text>
 						</u-form-item>
-						<u-form-item label="作业类型" >
+						<u-form-item label="作业类型">
 							<!-- <uni-data-select v-model="item.value" :localdata="range" @change="change(index)" :clear="false"></uni-data-select> -->
 							<!-- <view @click="handleIndex(index)"> -->
-								<select-cy :value="item.value" placeholder="请选择项目" :listIndex="index" :options="range" @change="change"></select-cy>
+							<select-cy v-if="index == 1" ref="selectCyRef" :value="item.value" placeholder="请选择项目" :listIndex="index"
+								:options="range" @change="changeSel"></select-cy>
 							<!-- </view> -->
 						</u-form-item>
 						<!-- <u-form-item label="开始拍照"> -->
 						<!-- <view style="font-size: 40rpx;margin-left: 40rpx;" @click="getImageInfo">获取图片信息</view>
 			         		图片最后修改时间(拍摄时间)<uni-dateformat :date="date"></uni-dateformat> -->
-						<view class="example-body" >
+						<view class="example-body">
 							<uni-file-picker v-model="item.imageValueStart" disable-preview :del-icon="false"
 								return-type="object" limit="1" title="开始拍照" @select="select" @progress="progress"
 								@success="success" @fail="fail"></uni-file-picker>
@@ -94,6 +95,7 @@
 	export default {
 		data() {
 			return {
+				dataList1: [],
 				model: {
 					code: '',
 					quantity: '',
@@ -111,28 +113,24 @@
 				imageValueStart: [],
 				imageValueEnd: [],
 				range: [{
-						value: "0",
+						value: "一",
 						label: "篮球"
 					},
 					{
-						value: "1",
+						value: "二",
 						label: "足球"
 					},
 					{
-						value:"2",
+						value: "三",
 						label: "游泳"
 					},
 					{
-						value: "3",
+						value: "四",
 						label: '跳神'
 					},
 					{
-						value: "4",
+						value: "五",
 						label: '健身'
-					},
-					{
-						value: "5",
-						label: '跑步'
 					},
 				],
 				rules: {
@@ -176,6 +174,7 @@
 		},
 		components: {
 			yjCard,
+			// select - cy
 		},
 		methods: {
 			confirm(e) {
@@ -187,12 +186,12 @@
 			handleRove() {
 				console.log('12121')
 			},
-			change(listIndex,item,value) {
-				// this.CardList[listIndex].value = value
-				// this.$set(this.CardList[listIndex],'value',value)
-				// console.log(this.CardList[listIndex],'hhhhhhh')
-				console.log(listIndex,item,value,'这个是什么')
-				// console.log(listIndex,'gggggggg')
+			changeSel(item, value, listIndex) {
+				// selectCyRef
+				// this.CardList[listIndex].value = value;
+				// this.$set(this.CardList[listIndex], 'value', value);
+				// this.$forceUpdate()
+				// this.$refs.selectCyRef[listIndex].init()
 			},
 			success(e) {
 				console.log(e, 'success')

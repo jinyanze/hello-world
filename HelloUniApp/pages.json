@@ -254,6 +254,12 @@
 				"navigationBarTitleText": "video"
 			}
 		},
+		{
+			"path": "pages/more/more",
+			"style": {
+				"navigationBarTitleText": "more"
+			}
+		},
 		// #ifndef MP-ALIPAY || MP-TOUTIAO || VUE3
 		// {
 		// 	"path": "pages/component/audio/audio",
@@ -367,16 +373,22 @@
 
 		}
 
-	    ,{
-            "path" : "pages/mechanicalApproachAdd/mechanicalApproachAdd",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "进场验收",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+		, {
+			"path": "pages/mechanicalApproachAdd/mechanicalApproachAdd",
+			"style": {
+				"navigationBarTitleText": "进场验收",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/refuel/refuel",
+			"style": {
+				"navigationBarTitleText": "加油列表",
+				"enablePullDownRefresh": false
+			}
+
+		}
+	],
 	"subPackages": [{
 			"root": "pages/API",
 			"pages": [{

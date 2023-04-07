@@ -1,17 +1,22 @@
 <template>
 	<view class="mechanicalApproachAdd">
 		<u--form class="yj-form" labelPosition="left" :model="mechanicalApproach" ref="uForm" labelWidth="200rpx">
-			<u-form-item label="机械代码" ref="item1">
-				<u--input class="ta-right" v-model="mechanicalApproach.num" border="none"></u--input>
+			<u-form-item required label="机械代码" ref="item1">
+				<u--input class="ta-right" v-model="mechanicalApproach.num" border="none" disabled
+					disabledColor="#f2f2f2"></u--input>
+				<u-icon name="scan" size="25"></u-icon>
 			</u-form-item>
 			<u-form-item label="物料编码" ref="item1">
-				<u--input class="ta-right" v-model="mechanicalApproach.mechanicalCode" border="none"></u--input>
+				<u--input class="ta-right" v-model="mechanicalApproach.mechanicalCode" disabled disabledColor="#f2f2f2"
+					border="none"></u--input>
 			</u-form-item>
 			<u-form-item label="名称" ref="item1">
-				<u--input class="ta-right" v-model="mechanicalApproach.mechanicalName" border="none"></u--input>
+				<u--input class="ta-right" v-model="mechanicalApproach.mechanicalName" disabled disabledColor="#f2f2f2"
+					border="none"></u--input>
 			</u-form-item>
 			<u-form-item label="规格型号" ref="item1">
-				<u--input class="ta-right" v-model="mechanicalApproach.mechanicalSize" border="none"></u--input>
+				<u--input class="ta-right" v-model="mechanicalApproach.mechanicalSize" disabled disabledColor="#f2f2f2"
+					border="none"></u--input>
 			</u-form-item>
 			<u-form-item label="单位" ref="item1">
 				<u--input class="ta-right" v-model="mechanicalApproach.unit" border="none"></u--input>
@@ -22,12 +27,14 @@
 			<u-form-item label="授权人" ref="item1">
 				<u--input class="ta-right" v-model="mechanicalApproach.person" border="none"></u--input>
 			</u-form-item>
-			<u-form-item label="租赁方式" ref="item1">
+			<u-form-item label="租赁方式" required ref="item1">
 				<uni-data-select class="yj-select" v-model="mechanicalApproach.leaseStatus" :localdata="range"
 					@change="changeLease"></uni-data-select>
 			</u-form-item>
 			<u-form-item label="进场时间" ref="item1">
-				<u--input class="ta-right" v-model="mechanicalApproach.person" border="none"></u--input>
+				<view class="" style="width: 100%;text-align: right;" @click="showDateTime=true">
+					{{mechanicalApproach.showDateTime ? mechanicalApproach.showDateTime : '请选择进场时间'}}
+				</view>
 			</u-form-item>
 			<u-form-item label="备注" ref="item1" labelPosition="top">
 				<u--textarea style="margin-top: 20rpx;" v-model="mechanicalApproach.remark" maxlength="200" count
@@ -45,7 +52,11 @@
 				<u-upload :fileList="fileList" @afterRead="afterRead" @delete="deletePic" name="1" multiple
 					:maxCount="2"></u-upload>
 			</u-form-item>
+			<u-button v-if="status == 1" type="primary" size="big" text="创建"></u-button>
+			<u-button v-if="status == 2" type="primary" size="big" text="修改"></u-button>
 		</u--form>
+		<u-datetime-picker :show="showDateTime" v-model="approachDateTime" mode="datetime" @cancel="showDateTime=false"
+			@confirm="selectApprpacjDateTime"></u-datetime-picker>
 	</view>
 </template>
 
@@ -53,20 +64,23 @@
 	export default {
 		data() {
 			return {
+				showDateTime: false,
+				approachDateTime: new Date().getTime(),
+				status: 1,
 				mechanicalApproach: {
-					num: 'JC00100004',
-					dateTime: '2023.02.11  10:00:00',
-					person: '李白',
-					mechanicalCode: 'JX00001',
-					mechanicalName: '挖掘机',
-					mechanicalSize: 'size1',
-					leaseLabel: '月租',
-					leaseStatus: 1,
-					approachTime: '2023.03.01',
-					unit: 'm³',
-					equipmentId: '1111112',
-					remark: '太丑了,不要',
-					remark2: '95 加满',
+					num: '',
+					dateTime: '',
+					person: '',
+					mechanicalCode: '',
+					mechanicalName: '',
+					mechanicalSize: '',
+					leaseLabel: '',
+					leaseStatus: null,
+					approachTime: '',
+					unit: '',
+					equipmentId: '',
+					remark: '',
+					remark2: 'Z',
 					imageList: []
 				},
 				range: [{
@@ -82,11 +96,19 @@
 			}
 		},
 		onLoad(query) {
-			// if (query.item) {
-			// 	this.mechanicalApproach = JSON.parse(query.item)
-			// }
+			if (query.item) {
+				this.status = 2;
+				// this.mechanicalApproach = JSON.parse(query.item);
+			} else {
+				this.status = 1
+			}
 		},
 		methods: {
+			selectApprpacjDateTime(value) {
+				console.log('aaaaaa', value);
+				this.mechanicalApproach.approachTime = this.approachDateTime;
+				this.showDateTime = false;
+			},
 			changeLease() {
 
 			},
@@ -106,6 +128,9 @@
 
 <style lang="less" scoped>
 	.mechanicalApproachAdd {
+		background: #f7f7fd;
+		padding-bottom: 40rpx;
+
 		.yj-form {
 			width: 90%;
 			margin: 0 5%;
