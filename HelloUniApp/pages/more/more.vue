@@ -57,8 +57,13 @@
 						<u-form-item label="作业类型">
 							<!-- <uni-data-select v-model="item.value" :localdata="range" @change="change(index)" :clear="false"></uni-data-select> -->
 							<!-- <view @click="handleIndex(index)"> -->
+<<<<<<< HEAD
+							<select-cy :value="item.value" placeholder="请选择项目" :listIndex="index" :options="range"
+								@change="change"></select-cy>
+=======
 							<select-cy v-if="index == 1" ref="selectCyRef" :value="item.value" placeholder="请选择项目" :listIndex="index"
 								:options="range" @change="changeSel"></select-cy>
+>>>>>>> acf7738d11a23df627e0801e859230b8a9bfa19f
 							<!-- </view> -->
 						</u-form-item>
 						<!-- <u-form-item label="开始拍照"> -->
@@ -85,6 +90,7 @@
 			</u-swipe-action>
 
 			<u-button @click="handleAdd">Add追加</u-button>
+			<u-button @click="submit">提交</u-button>
 		</u-form>
 	</view>
 </template>
@@ -113,6 +119,59 @@
 				imageValueStart: [],
 				imageValueEnd: [],
 				range: [{
+<<<<<<< HEAD
+						value: 0,
+						label: "篮球"
+					},
+					{
+						value: 1,
+						label: "足球"
+					},
+					{
+						value: 2,
+						label: "游泳"
+					},
+					{
+						value: 3,
+						label: '跳神'
+					},
+					{
+						value: 4,
+						label: '健身'
+					},
+					{
+						value: 5,
+						label: '跑步'
+					},
+					{
+						value: 6,
+						label: '跑步1'
+					},
+					{
+						value: 7,
+						label: '跑步11'
+					},
+					{
+						value: 8,
+						label: '跑步12'
+					},
+					{
+						value: 9,
+						label: '跑步14'
+					},
+					{
+						value: 10,
+						label: '跑步163'
+					},
+					{
+						value: 11,
+						label: '跑步2'
+					},
+					{
+						value: 12,
+						label: '跑步1123'
+					},
+=======
 						value: "一",
 						label: "篮球"
 					},
@@ -132,6 +191,7 @@
 						value: "五",
 						label: '健身'
 					},
+>>>>>>> acf7738d11a23df627e0801e859230b8a9bfa19f
 				],
 				rules: {
 					'code': {
@@ -186,12 +246,29 @@
 			handleRove() {
 				console.log('12121')
 			},
+<<<<<<< HEAD
+			change( listIndex, item, value) {
+				let demo = 'listdemo' + listIndex;
+				this[demo] = value;
+				// this.$set(this.CardList[listIndex],'value',value)
+				// this.CardList[listIndex].value.push = value
+				console.log(this.CardList, 'CardList')
+			},
+			submit() {
+				let arr = JSON.parse(JSON.stringify(this.CardList))
+				arr.map((item,index)=>{
+					let demo = 'listdemo' + index;
+					item.value = (this[demo]);
+				})
+				console.log(arr,'qqqq')
+=======
 			changeSel(item, value, listIndex) {
 				// selectCyRef
 				// this.CardList[listIndex].value = value;
 				// this.$set(this.CardList[listIndex], 'value', value);
 				// this.$forceUpdate()
 				// this.$refs.selectCyRef[listIndex].init()
+>>>>>>> acf7738d11a23df627e0801e859230b8a9bfa19f
 			},
 			success(e) {
 				console.log(e, 'success')
