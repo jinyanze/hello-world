@@ -136,21 +136,21 @@
 
 			},
 			// 加油前-删除图片
-			deletePic(event) {
+			deletePic1(event) {
 				this.beforeFileList.splice(event.index, 1)
 			},
 			// 加油前-新增图片
-			async afterRead(event) {
+			async afterRead1(event) {
 				event.file.map(item => {
 					this.beforeFileList.push(item)
 				})
 			},
 			// 加油后-删除图片
-			deletePic(event) {
+			deletePic2(event) {
 				this.afterFileList.splice(event.index, 1)
 			},
 			// 加油后-新增图片
-			async afterRead(event) {
+			async afterRead2(event) {
 				event.file.map(item => {
 					this.afterFileList.push(item)
 				})
