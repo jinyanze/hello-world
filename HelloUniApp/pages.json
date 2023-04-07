@@ -367,7 +367,16 @@
 
 		}
 
-	],
+	    ,{
+            "path" : "pages/mechanicalApproachAdd/mechanicalApproachAdd",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "进场验收",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"subPackages": [{
 			"root": "pages/API",
 			"pages": [{
