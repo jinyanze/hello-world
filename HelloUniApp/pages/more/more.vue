@@ -31,7 +31,7 @@
 				<u-input placeholder="请输入作业量" type="text" v-model="model.quantity" input-align="right" />
 			</u-form-item>
 			<u-form-item label="作业时间">
-				<u-button type="primary" text="一键导入" @click="handleRove"></u-button>
+				<u-button type="primary" text="一键 导入" @click="handleRove"></u-button>
 			</u-form-item>
 			<u-swipe-action>
 				<u-swipe-action-item :options="options1" @click='closeClick(index)' v-for="(item,index) in CardList"
@@ -57,8 +57,13 @@
 						<u-form-item label="作业类型">
 							<!-- <uni-data-select v-model="item.value" :localdata="range" @change="change(index)" :clear="false"></uni-data-select> -->
 							<!-- <view @click="handleIndex(index)"> -->
+<<<<<<< HEAD
 							<select-cy :value="item.value" placeholder="请选择项目" :listIndex="index" :options="range"
 								@change="change"></select-cy>
+=======
+							<select-cy v-if="index == 1" ref="selectCyRef" :value="item.value" placeholder="请选择项目" :listIndex="index"
+								:options="range" @change="changeSel"></select-cy>
+>>>>>>> acf7738d11a23df627e0801e859230b8a9bfa19f
 							<!-- </view> -->
 						</u-form-item>
 						<!-- <u-form-item label="开始拍照"> -->
@@ -96,6 +101,7 @@
 	export default {
 		data() {
 			return {
+				dataList1: [],
 				model: {
 					code: '',
 					quantity: '',
@@ -113,6 +119,7 @@
 				imageValueStart: [],
 				imageValueEnd: [],
 				range: [{
+<<<<<<< HEAD
 						value: 0,
 						label: "篮球"
 					},
@@ -164,6 +171,27 @@
 						value: 12,
 						label: '跑步1123'
 					},
+=======
+						value: "一",
+						label: "篮球"
+					},
+					{
+						value: "二",
+						label: "足球"
+					},
+					{
+						value: "三",
+						label: "游泳"
+					},
+					{
+						value: "四",
+						label: '跳神'
+					},
+					{
+						value: "五",
+						label: '健身'
+					},
+>>>>>>> acf7738d11a23df627e0801e859230b8a9bfa19f
 				],
 				rules: {
 					'code': {
@@ -206,6 +234,7 @@
 		},
 		components: {
 			yjCard,
+			// select - cy
 		},
 		methods: {
 			confirm(e) {
@@ -217,6 +246,7 @@
 			handleRove() {
 				console.log('12121')
 			},
+<<<<<<< HEAD
 			change( listIndex, item, value) {
 				let demo = 'listdemo' + listIndex;
 				this[demo] = value;
@@ -231,6 +261,14 @@
 					item.value = (this[demo]);
 				})
 				console.log(arr,'qqqq')
+=======
+			changeSel(item, value, listIndex) {
+				// selectCyRef
+				// this.CardList[listIndex].value = value;
+				// this.$set(this.CardList[listIndex], 'value', value);
+				// this.$forceUpdate()
+				// this.$refs.selectCyRef[listIndex].init()
+>>>>>>> acf7738d11a23df627e0801e859230b8a9bfa19f
 			},
 			success(e) {
 				console.log(e, 'success')

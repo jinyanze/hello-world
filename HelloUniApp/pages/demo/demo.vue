@@ -365,13 +365,12 @@
 			handleNodeClick(obj) {},
 			handleNodeExpand(obj) {},
 			// 选择wbs end
-
+			
+			// 懒加载列表 start
 			mescrollInit(mescroll) {
 				this.mescroll = mescroll;
 				this.loadmore()
 			},
-
-			// 懒加载列表 start
 			downCallback() {
 				this.indexList = [];
 				this.totalPage = 1;
