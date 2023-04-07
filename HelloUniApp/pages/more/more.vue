@@ -57,13 +57,8 @@
 						<u-form-item label="作业类型">
 							<!-- <uni-data-select v-model="item.value" :localdata="range" @change="change(index)" :clear="false"></uni-data-select> -->
 							<!-- <view @click="handleIndex(index)"> -->
-<<<<<<< HEAD
 							<select-cy :value="item.value" placeholder="请选择项目" :listIndex="index" :options="range"
 								@change="change"></select-cy>
-=======
-							<select-cy v-if="index == 1" ref="selectCyRef" :value="item.value" placeholder="请选择项目" :listIndex="index"
-								:options="range" @change="changeSel"></select-cy>
->>>>>>> acf7738d11a23df627e0801e859230b8a9bfa19f
 							<!-- </view> -->
 						</u-form-item>
 						<!-- <u-form-item label="开始拍照"> -->
@@ -119,7 +114,6 @@
 				imageValueStart: [],
 				imageValueEnd: [],
 				range: [{
-<<<<<<< HEAD
 						value: 0,
 						label: "篮球"
 					},
@@ -170,28 +164,7 @@
 					{
 						value: 12,
 						label: '跑步1123'
-					},
-=======
-						value: "一",
-						label: "篮球"
-					},
-					{
-						value: "二",
-						label: "足球"
-					},
-					{
-						value: "三",
-						label: "游泳"
-					},
-					{
-						value: "四",
-						label: '跳神'
-					},
-					{
-						value: "五",
-						label: '健身'
-					},
->>>>>>> acf7738d11a23df627e0801e859230b8a9bfa19f
+					}
 				],
 				rules: {
 					'code': {
@@ -246,8 +219,7 @@
 			handleRove() {
 				console.log('12121')
 			},
-<<<<<<< HEAD
-			change( listIndex, item, value) {
+			change(listIndex, item, value) {
 				let demo = 'listdemo' + listIndex;
 				this[demo] = value;
 				// this.$set(this.CardList[listIndex],'value',value)
@@ -256,19 +228,11 @@
 			},
 			submit() {
 				let arr = JSON.parse(JSON.stringify(this.CardList))
-				arr.map((item,index)=>{
+				arr.map((item, index) => {
 					let demo = 'listdemo' + index;
 					item.value = (this[demo]);
 				})
-				console.log(arr,'qqqq')
-=======
-			changeSel(item, value, listIndex) {
-				// selectCyRef
-				// this.CardList[listIndex].value = value;
-				// this.$set(this.CardList[listIndex], 'value', value);
-				// this.$forceUpdate()
-				// this.$refs.selectCyRef[listIndex].init()
->>>>>>> acf7738d11a23df627e0801e859230b8a9bfa19f
+				console.log(arr, 'qqqq')
 			},
 			success(e) {
 				console.log(e, 'success')
@@ -315,7 +279,8 @@
 			// 选择卡片结束时间
 			changeLogEnd(e, i) {
 				this.CardList[i].EndTime = e
-				this.CardList[i].timeOver = Math.floor((this.CardList[i].StartTime - this.CardList[i].EndTime / (1000 *
+				this.CardList[i].timeOver = Math.floor((this.CardList[i].StartTime - this.CardList[i].EndTime / (
+					1000 *
 					60)) % 60)
 				console.log(e, i, this.CardList, this.CardList[i].timeOver, '卡片结束时间')
 			},
