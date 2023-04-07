@@ -54,16 +54,17 @@
 						<u-form-item label="工作时长">
 							<text>{{item.timeOver}}分钟</text>
 						</u-form-item>
-						<u-form-item label="作业类型" >
+						<u-form-item label="作业类型">
 							<!-- <uni-data-select v-model="item.value" :localdata="range" @change="change(index)" :clear="false"></uni-data-select> -->
 							<!-- <view @click="handleIndex(index)"> -->
-								<select-cy :value="item.value" placeholder="请选择项目" :listIndex="index" :options="range" @change="change"></select-cy>
+							<select-cy :value="item.value" placeholder="请选择项目" :listIndex="index" :options="range"
+								@change="change"></select-cy>
 							<!-- </view> -->
 						</u-form-item>
 						<!-- <u-form-item label="开始拍照"> -->
 						<!-- <view style="font-size: 40rpx;margin-left: 40rpx;" @click="getImageInfo">获取图片信息</view>
 			         		图片最后修改时间(拍摄时间)<uni-dateformat :date="date"></uni-dateformat> -->
-						<view class="example-body" >
+						<view class="example-body">
 							<uni-file-picker v-model="item.imageValueStart" disable-preview :del-icon="false"
 								return-type="object" limit="1" title="开始拍照" @select="select" @progress="progress"
 								@success="success" @fail="fail"></uni-file-picker>
@@ -84,6 +85,7 @@
 			</u-swipe-action>
 
 			<u-button @click="handleAdd">Add追加</u-button>
+			<u-button @click="submit">提交</u-button>
 		</u-form>
 	</view>
 </template>
@@ -111,28 +113,56 @@
 				imageValueStart: [],
 				imageValueEnd: [],
 				range: [{
-						value: "0",
+						value: 0,
 						label: "篮球"
 					},
 					{
-						value: "1",
+						value: 1,
 						label: "足球"
 					},
 					{
-						value:"2",
+						value: 2,
 						label: "游泳"
 					},
 					{
-						value: "3",
+						value: 3,
 						label: '跳神'
 					},
 					{
-						value: "4",
+						value: 4,
 						label: '健身'
 					},
 					{
-						value: "5",
+						value: 5,
 						label: '跑步'
+					},
+					{
+						value: 6,
+						label: '跑步1'
+					},
+					{
+						value: 7,
+						label: '跑步11'
+					},
+					{
+						value: 8,
+						label: '跑步12'
+					},
+					{
+						value: 9,
+						label: '跑步14'
+					},
+					{
+						value: 10,
+						label: '跑步163'
+					},
+					{
+						value: 11,
+						label: '跑步2'
+					},
+					{
+						value: 12,
+						label: '跑步1123'
 					},
 				],
 				rules: {
@@ -187,12 +217,20 @@
 			handleRove() {
 				console.log('12121')
 			},
-			change(listIndex,item,value) {
-				// this.CardList[listIndex].value = value
+			change( listIndex, item, value) {
+				let demo = 'listdemo' + listIndex;
+				this[demo] = value;
 				// this.$set(this.CardList[listIndex],'value',value)
-				// console.log(this.CardList[listIndex],'hhhhhhh')
-				console.log(listIndex,item,value,'这个是什么')
-				// console.log(listIndex,'gggggggg')
+				// this.CardList[listIndex].value.push = value
+				console.log(this.CardList, 'CardList')
+			},
+			submit() {
+				let arr = JSON.parse(JSON.stringify(this.CardList))
+				arr.map((item,index)=>{
+					let demo = 'listdemo' + index;
+					item.value = (this[demo]);
+				})
+				console.log(arr,'qqqq')
 			},
 			success(e) {
 				console.log(e, 'success')
