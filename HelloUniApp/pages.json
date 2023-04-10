@@ -12,6 +12,26 @@
 		}
 	},
 	"pages": [{
+			"path": "pages/demo/demo",
+			"style": {
+				"navigationBarTitleText": "demo",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/mechanicalExit/mechanicalExit",
+			"style": {
+				"navigationBarTitleText": "退场列表",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/mechanicalExitAdd/mechanicalExitAdd",
+			"style": {
+				"navigationBarTitleText": "机械退场",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
 			"path": "pages/refuel/refuel",
 			"style": {
 				"navigationBarTitleText": "加油列表",
@@ -31,9 +51,6 @@
 				"navigationBarTitleText": "进场单列表",
 				"enablePullDownRefresh": false
 			}
-
-		}, {
-			"path": "pages/demo/demo"
 
 		},
 		{

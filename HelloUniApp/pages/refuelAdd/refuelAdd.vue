@@ -6,10 +6,6 @@
 					disabledColor="#f2f2f2"></u--input>
 				<u-icon name="scan" size="25" @click="scanCode"></u-icon>
 			</u-form-item>
-			<!-- <u-form-item label="物料编码" ref="item1">
-				<u--input class="ta-right" v-model="refuel.mechanicalCode" disabled disabledColor="#f2f2f2"
-					border="none"></u--input>
-			</u-form-item> -->
 			<u-form-item label="名称" ref="item1">
 				<u--input class="ta-right" v-model="refuel.mechanicalName" disabled disabledColor="#f2f2f2"
 					border="none"></u--input>
@@ -21,9 +17,6 @@
 			<u-form-item label="单位" ref="item1">
 				<u--input class="ta-right" v-model="refuel.unit" border="none"></u--input>
 			</u-form-item>
-			<!-- <u-form-item label="智能设备ID" ref="item1">
-				<u--input class="ta-right" v-model="refuel.equipmentId" border="none"></u--input>
-			</u-form-item> -->
 			<u-form-item label="授权人" ref="item1">
 				<u--input class="ta-right" v-model="refuel.person" border="none"></u--input>
 			</u-form-item>
@@ -53,7 +46,7 @@
 			</u-form-item>
 			<u-form-item label="加油时间" ref="item1">
 				<view class="" style="width: 100%;text-align: right;">
-					{{refuel.fuelTime}}
+					{{refuel.fuelTime ? refuel.fuelTime + ' h': ''}}
 				</view>
 			</u-form-item>
 			<u-form-item label="加油前图片" ref="item1" labelPosition="top">
@@ -121,18 +114,19 @@
 				this.status = 2;
 				// this.refuel = JSON.parse(query.item);
 			} else {
-				this.status = 1
+				this.status = 1;
 			}
 		},
 		watch: {
 			beforeTime(val) {
 				if (val && this.afterTime) {
-
+					this.refuel.fuelTime = ((this.afterTime - val) / 3600000).toFixed(6);
 				}
 			},
 			afterTime(val) {
 				if (val && this.beforeTime) {
-
+					console.log('bbbbb', val - this.beforeTime);
+					this.refuel.fuelTime = ((val - this.beforeTime) / 3600000).toFixed(6);
 				}
 			},
 		},
@@ -176,7 +170,6 @@
 			},
 			// 加油前-新增图片
 			async afterRead1(event) {
-				// console.log('aaaaa', event);
 				this.beforeFileList.push(event.file);
 				plus.io.resolveLocalFileSystemURL(event.file.url, (entry) => {
 					entry.file((file) => {
@@ -198,7 +191,6 @@
 					entry.file((file) => {
 						var fileReader = new plus.io.FileReader();
 						this.afterTime = new Date(file.lastModifiedDate).getTime();
-						// this.date = file.lastModifiedDate;
 					});
 				}, (e) => {});
 			},

@@ -31,7 +31,7 @@
 				<u-input placeholder="请输入作业量" type="text" v-model="model.quantity" input-align="right" />
 			</u-form-item>
 			<u-form-item label="作业时间">
-				<u-button type="primary" text="一键 导入" @click="handleRove"></u-button>
+				<u-button type="primary" text="一键导入" @click="handleRove"></u-button>
 			</u-form-item>
 			<u-swipe-action>
 				<u-swipe-action-item :options="options1" @click='closeClick(index)' v-for="(item,index) in CardList"
@@ -96,7 +96,6 @@
 	export default {
 		data() {
 			return {
-				dataList1: [],
 				model: {
 					code: '',
 					quantity: '',
@@ -164,7 +163,7 @@
 					{
 						value: 12,
 						label: '跑步1123'
-					}
+					},
 				],
 				rules: {
 					'code': {
@@ -207,7 +206,6 @@
 		},
 		components: {
 			yjCard,
-			// select - cy
 		},
 		methods: {
 			confirm(e) {
@@ -219,7 +217,7 @@
 			handleRove() {
 				console.log('12121')
 			},
-			change(listIndex, item, value) {
+			change( listIndex, item, value) {
 				let demo = 'listdemo' + listIndex;
 				this[demo] = value;
 				// this.$set(this.CardList[listIndex],'value',value)
@@ -228,11 +226,11 @@
 			},
 			submit() {
 				let arr = JSON.parse(JSON.stringify(this.CardList))
-				arr.map((item, index) => {
+				arr.map((item,index)=>{
 					let demo = 'listdemo' + index;
 					item.value = (this[demo]);
 				})
-				console.log(arr, 'qqqq')
+				console.log(arr,'qqqq')
 			},
 			success(e) {
 				console.log(e, 'success')
@@ -279,8 +277,7 @@
 			// 选择卡片结束时间
 			changeLogEnd(e, i) {
 				this.CardList[i].EndTime = e
-				this.CardList[i].timeOver = Math.floor((this.CardList[i].StartTime - this.CardList[i].EndTime / (
-					1000 *
+				this.CardList[i].timeOver = Math.floor((this.CardList[i].StartTime - this.CardList[i].EndTime / (1000 *
 					60)) % 60)
 				console.log(e, i, this.CardList, this.CardList[i].timeOver, '卡片结束时间')
 			},
