@@ -12,6 +12,20 @@
 		}
 	},
 	"pages": [{
+			"path": "pages/refuel/refuel",
+			"style": {
+				"navigationBarTitleText": "加油列表",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/refuelAdd/refuelAdd",
+			"style": {
+				"navigationBarTitleText": "扫码加油",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
 			"path": "pages/mechanicalApproach/mechanicalApproach",
 			"style": {
 				"navigationBarTitleText": "进场单列表",
@@ -377,20 +391,6 @@
 			"path": "pages/mechanicalApproachAdd/mechanicalApproachAdd",
 			"style": {
 				"navigationBarTitleText": "进场验收",
-				"enablePullDownRefresh": false
-			}
-
-		}, {
-			"path": "pages/refuel/refuel",
-			"style": {
-				"navigationBarTitleText": "加油列表",
-				"enablePullDownRefresh": false
-			}
-
-		}, {
-			"path": "pages/refuelAdd/refuelAdd",
-			"style": {
-				"navigationBarTitleText": "扫码加油",
 				"enablePullDownRefresh": false
 			}
 

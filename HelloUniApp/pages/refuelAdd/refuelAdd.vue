@@ -79,6 +79,9 @@
 			return {
 				showDateTime: false,
 				approachDateTime: new Date().getTime(),
+				beforeTime: 0,
+				afterTime: 0,
+
 				status: 1,
 				refuel: {
 					num: '',
@@ -121,7 +124,38 @@
 				this.status = 1
 			}
 		},
+		watch: {
+			beforeTime(val) {
+				if (val && this.afterTime) {
+
+				}
+			},
+			afterTime(val) {
+				if (val && this.beforeTime) {
+
+				}
+			},
+		},
 		methods: {
+			// 获得图片最后修改时间 start
+			getImageInfo() {
+				uni.chooseImage({
+					count: 1,
+					sourceType: ['album', 'camera'],
+					sizeType: ['original'],
+					success: (res) => {
+						// 原生HTML5+获得图片最后修改时间 不支持h5 环境
+						// h5环境在uni.chooseImage的返回值中就可以获得得图片最后修改时间
+						plus.io.resolveLocalFileSystemURL(res.tempFilePaths[0], (entry) => {
+							entry.file((file) => {
+								var fileReader = new plus.io.FileReader();
+								console.log("getFile:" + JSON.stringify(file));
+								this.date = file.lastModifiedDate;
+							});
+						}, (e) => {});
+					}
+				});
+			},
 			scanCode() {
 				mpaasScanModule.mpaasScan({},
 					(res) => {
@@ -137,23 +171,36 @@
 			},
 			// 加油前-删除图片
 			deletePic1(event) {
-				this.beforeFileList.splice(event.index, 1)
+				this.beforeFileList.splice(event.index, 1);
+				this.beforeTime = 0;
 			},
 			// 加油前-新增图片
 			async afterRead1(event) {
-				event.file.map(item => {
-					this.beforeFileList.push(item)
-				})
+				// console.log('aaaaa', event);
+				this.beforeFileList.push(event.file);
+				plus.io.resolveLocalFileSystemURL(event.file.url, (entry) => {
+					entry.file((file) => {
+						var fileReader = new plus.io.FileReader();
+						this.beforeTime = new Date(file.lastModifiedDate).getTime();
+						// this.date = file.lastModifiedDate;
+					});
+				}, (e) => {});
 			},
 			// 加油后-删除图片
 			deletePic2(event) {
 				this.afterFileList.splice(event.index, 1)
+				this.afterTime = 0;
 			},
 			// 加油后-新增图片
 			async afterRead2(event) {
-				event.file.map(item => {
-					this.afterFileList.push(item)
-				})
+				this.afterFileList.push(event)
+				plus.io.resolveLocalFileSystemURL(event.file.url, (entry) => {
+					entry.file((file) => {
+						var fileReader = new plus.io.FileReader();
+						this.afterTime = new Date(file.lastModifiedDate).getTime();
+						// this.date = file.lastModifiedDate;
+					});
+				}, (e) => {});
 			},
 		}
 	}
